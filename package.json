@@ -4,13 +4,26 @@
   "private": true,
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.7",
+    "@mui/joy": "^5.0.0-beta.51",
+    "@mui/material": "^6.4.7",
+    "@mui/styled-engine-sc": "^6.4.6",
+    "@tailwindcss/postcss": "^4.0.9",
+    "@tailwindcss/vite": "^4.0.9",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^13.2.1",
+    "animate.css": "^4.1.1",
+    "axios": "^1.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router-dom": "^7.2.0",
     "react-scripts": "5.0.1",
+    "sass": "^1.85.1",
+    "styled-components": "^6.1.15",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
@@ -36,5 +49,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.3"
   }
 }
