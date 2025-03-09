@@ -1,8 +1,11 @@
 import React from 'react'
+import Sidebar from '../components/Sidebar'
 
 const Worker = () => {
   return (
-    <div>Worker</div>
+    <div>
+      <Sidebar />
+    </div>
   )
 }
 

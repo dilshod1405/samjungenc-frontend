@@ -44,7 +44,7 @@ const Login = () => {
 
   return (
     <div className='bg-white rounded-lg shadow-lg p-5 md:w-1/3 mx-auto mt-20 animate__animated animate__fadeIn'>
-      <img src="http://en.speedchiller.com/images/common/logo_en.svg" alt="" className='mx-auto mb-5 w-1/2 md:w-1/3'/>
+      <img src="logo_en.svg" alt="" className='mx-auto mb-5 w-1/2 md:w-1/3'/>
       <h1 className='text-2xl font-bold text-gray-500 text-center'>귀하의 계정에 로그인하세요</h1>
       <form className='mt-5' onSubmit={handleLogin}>
         <div className='mb-5 flex justify-center'>

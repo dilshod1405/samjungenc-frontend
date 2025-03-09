@@ -1,8 +1,11 @@
 import React from 'react'
+import Sidebar from '../components/Sidebar'
 
 const ServiceManager = () => {
   return (
-    <div>ServiceManager</div>
+    <div>
+      <Sidebar />
+    </div>
   )
 }
 
