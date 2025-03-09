@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import DoorSlidingIcon from '@mui/icons-material/DoorSliding';
@@ -35,11 +35,11 @@ const serviceManagerSidebar = [
 ];
 
 const teamLeadSidebar = [
-  { title: "계기반", icon: <DashboardIcon />, link: "/service-manager/dashboard" },
-  { title: "기계", icon: <DoorSlidingIcon />, link: "/service-manager/machines" },
-  { title: "주문", icon: <ChecklistIcon />, link: "/service-manager/orders" },
-  { title: "문서", icon: <InsertDriveFileIcon />, link: "/service-manager/documents" },
-  { title: "서비스", icon:<EngineeringIcon />, link: "/service-manager/services" },
+  { title: "계기반", icon: <DashboardIcon />, link: "/teamlead/dashboard" }, 
+  { title: "기계", icon: <DoorSlidingIcon />, link: "/teamlead/machines" },
+  { title: "주문", icon: <ChecklistIcon />, link: "/teamlead/orders" },
+  { title: "문서", icon: <InsertDriveFileIcon />, link: "/teamlead/documents" },
+  { title: "서비스", icon:<EngineeringIcon />, link: "/teamlead/services" },
 ];
 
 const workerSidebar = [
@@ -48,34 +48,38 @@ const workerSidebar = [
   { title: "문서", icon: <InsertDriveFileIcon />, link: "/worker/documents" },
 ];
 
-const Sidebar = () => {
-  const location = useLocation(); // Get current route
+const Sidebar = (props) => {
+  const navigate = useNavigate();
   const role = localStorage.getItem("role");
 
   let sidebar = [];
-  if (role === "admin") {
-    sidebar = adminSidebar;
-  } else if (role === "manager") {
-    sidebar = managerSidebar;
-  } else if (role === "service_manager") {
-    sidebar = serviceManagerSidebar;
-  } else if (role === "teamlead") {
-    sidebar = teamLeadSidebar;
-  } else if (role === "worker") {
-    sidebar = workerSidebar;
+  switch (role) {
+    case "admin":
+      sidebar = adminSidebar;
+      break;
+    case "manager":
+      sidebar = managerSidebar;
+      break;
+    case "service_manager":
+      sidebar = serviceManagerSidebar;
+      break;
+    case "teamlead":
+      sidebar = teamLeadSidebar;
+      break;
+    case "worker":
+      sidebar = workerSidebar;
+      break;
+    default:
+      sidebar = [];
   }
 
   return (
-    <div className="bg-white h-screen w-1/5 md:w-1/6 shadow-xl z-10 fixed top-0 left-0 overflow-y-auto border-r border-gray-200 animate__animated animate__fadeInLeft">
+    <div className={`bg-white h-screen md:w-1/5 sticky top-0 shadow-xl z-20 border-r border-gray-200 ${props.open ? 'hidden' : ''}`}>
       <div className="sidebar">
         <div className="sidebar-header">
-          <img
-            src="logo_en.svg"
-            alt=""
-            className="w-2/3 mx-auto my-4"
-          />
+          <img src="/logo_en.svg" alt="logo" className="w-2/3 mx-auto my-4"/>
           <h3 className="text-xl font-bold mb-4 text-center text-gray-600 font-sans tracking-wider flex items-center justify-center">
-            <span className=" mr-2 text-lg">🔵</span>{role?.toUpperCase()}
+            <span className="mr-2 text-lg">🔵</span>{role?.toUpperCase()}
           </h3>
         </div>
         <ul className="flex flex-col">
@@ -84,15 +88,13 @@ const Sidebar = () => {
               to={item.link}
               key={index}
               className={({ isActive }) =>
-                `rounded-md shadow-md text-[#001a6ecc] m-3 transition ease-in-out duration-200 ${
+                `flex items-center rounded-md shadow-md text-[#001a6ecc] m-3 p-3 transition ease-in-out duration-200 ${
                   isActive ? "bg-[#001a6ecc] text-white" : "hover:bg-[#001a6ecc] hover:text-white"
                 }`
               }
             >
-              <li className="p-3 flex items-center">
-                <span className="icon">{item.icon} |</span>
-                <span className="text-lg ml-2 font-semibold">{item.title}</span>
-              </li>
+              <span className="icon">{item.icon} -</span>
+              <span className="text-lg ml-2 font-semibold"> {item.title}</span>
             </NavLink>
           ))}
         </ul>
@@ -101,10 +103,10 @@ const Sidebar = () => {
         </div>
         <div className="flex justify-center">
           <Button
-            style={{ backgroundColor: "#f44336", color: "white", fontSize: "14px" }}
+            style={{ color: "white", fontSize: "14px" }}
             onClick={() => {
               localStorage.clear();
-              window.location.href = "/";
+              navigate("/");
             }}
             className="m-3 w-1/2 mx-auto block"
             variant="contained"

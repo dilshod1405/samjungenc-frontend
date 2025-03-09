@@ -55,7 +55,7 @@ const Login = () => {
         </div>
         {error && <div className='mb-5 text-red-500 text-center'>{error}</div>}
         <div className='mb-5 flex justify-center'>
-          <Button variant="contained" className='w-1/2 font-bold' style={{fontSize: '1.2rem'}} type='submit'>
+          <Button variant="contained" className='w-1/2 font-bold' style={{fontSize: '1.2rem', backgroundColor: '#001a6ecc'}} type='submit'>
             {loading ? <CircularProgress style={{color: 'white'}}/> : '로그인'}
           </Button>
         </div>

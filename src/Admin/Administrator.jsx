@@ -3,7 +3,7 @@ import Sidebar from '../components/Sidebar'
 
 const Administrator = () => {
   return (
-    <div>
+    <div className='flex flex-row'>
       <Sidebar />
     </div>
   )
