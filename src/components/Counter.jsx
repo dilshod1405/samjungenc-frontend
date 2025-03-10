@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 
 const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
-const Counter = ({ end, duration = 4000 }) => {
+const Counter = ({ end, duration = 2000 }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const frameRate = 1000 / 60; // 60fps
